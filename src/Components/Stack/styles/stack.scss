@@ -1,0 +1,50 @@
+.element {
+	list-style: none;
+	color: aliceblue;
+	background: #393e46;
+	height: 2em;
+	width: 2em;
+	border: 4px solid #1254be;
+	margin: 0.2em 0;
+	font-size: 40px;
+
+	&:hover {
+		background: #4cb4e9;
+		color: #424b53;
+
+		.arrow {
+			color: #4cb4e9;
+		}
+	}
+}
+
+.top {
+	color: aliceblue;
+	background: #4ECCA3;
+}
+
+.stack {
+	display: flex;
+	flex-flow: column;
+	justify-content: center;
+}
+
+.container {
+	display: flex;
+	justify-content: center;
+}
+
+.arrow {
+	position: relative;
+	left: 70px;
+	bottom: 60px;
+}
+
+.empty {
+	list-style: none;
+	color: aliceblue;
+	background: #1254be;
+	border: 4px solid #393e46;
+	padding: 1em;
+	font-size: 40px;
+}

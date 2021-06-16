@@ -1,0 +1,193 @@
+@mixin highlight($color) {
+	color: rgb(255, 255, 255);
+	text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px $color,
+		0 0 20px $color, 0 0 25px $color, 0 0 30px $color, 0 0 35px $color;
+		background-color: $color;
+}
+
+.tree ul {
+	padding: 0;
+	padding-top: 20px;
+	position: relative;
+	transition: all 0.5s;
+}
+
+.tree > ul {
+	display: table;
+	margin: 0 auto;
+}
+
+.tree li {
+	float: left;
+	text-align: center;
+	list-style-type: none;
+	position: relative;
+	padding: 10px 1px 0 1px;
+	transition: all 0.5s;
+}
+
+/* Line Styles starts*/
+.tree li::before,
+.tree li::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	right: 50%;
+	border-top: 1px solid #ccc;
+	width: 50%;
+	height: 10px;
+	transition: all 0.5s;
+}
+.tree li::after {
+	right: auto;
+	left: 50%;
+	border-left: 1px solid #ccc;
+}
+
+.tree li:last-child::before {
+	border-right: 1px solid #ccc;
+	border-radius: 0 5px 0 0;
+}
+
+.tree li:first-child::after {
+	border-radius: 5px 0 0 0;
+}
+
+.tree ul ul::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 50%;
+	border-left: 1px solid #ccc;
+	width: 0;
+	height: 20px;
+	transition: all 0.5s;
+}
+
+.tree li:only-child::after,
+.tree li:only-child::before {
+	display: none;
+}
+
+.tree li:only-child {
+	padding-top: 0;
+}
+
+.tree li:first-child::before,
+.tree li:last-child::after {
+	border: 0 none;
+}
+
+/* Node Styles starts*/
+.tree li div {
+	padding: 6px 12px;
+	text-decoration: none;
+	color: #F6F6F7;
+    background-color: #700EE6;
+	font-family: arial, verdana, tahoma;
+	font-size: 20px;
+	display: inline-block;
+	// box-shadow: -5px -5px 20px rgb(39, 158, 158), 5px 5px 20px rgb(39, 158, 158);
+	text-shadow: none;
+	border-radius: 200px;
+	transition: all 0.5s;
+
+	&.highlight {
+		@include highlight(#F62242);
+		box-shadow: -1px -1px 5px #F62242, 1px 1px 5px #F62242;
+		&.red {
+			@include highlight(#ff0000);
+		}
+
+		&.black {
+			@include highlight(#000000);
+		}
+	}
+}
+
+.tree li div:hover,
+.tree li div:hover + ul li div.normal {
+	color: #F6F6F7;
+	box-shadow: -1px -1px 5px #700EE6, 1px 1px 5px #700EE6;
+}
+
+.tree li div:hover + ul li::after,
+.tree li div:hover + ul li::before,
+.tree li div:hover + ul::before,
+.tree li div:hover + ul ul::before {
+	border-color: #5f6674;
+}
+
+li.null div {
+	color: #F6F6F7;
+}
+
+.tree li.null div:hover,
+.tree li.null div:hover + ul li div {
+	color: #F6F6F7;
+}
+
+.height {
+	font-size: 13px;
+}
+
+.traversal-pannel {
+	position: relative;
+	width: 50%;
+	top: 50%;
+	left: 25%;
+	margin-top: 2em;
+	padding: 2em;
+	background-color: rgb(43, 43, 43);
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.traversal,
+.bstlist {
+	margin: 30px 10px;
+	box-shadow: inset 2px 2px 5px #700EE6, inset -5px -5px 10px #700EE6;
+	padding: 16px;
+	border-radius: 10px;
+}
+
+.traversal ul,
+.bstlist ul {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	color: #babecc;
+	font-weight: bold;
+}
+
+.traversal p, .bstlist p {
+	color: #babecc;
+}
+
+.traversal li {
+	display: inline;
+	padding: 3px;
+}
+
+.bstlist li {
+	padding: 3px;
+}
+
+.error {
+	color: red;
+}
+
+@media screen and (min-width: 850px) {
+	.traversal {
+		position: absolute;
+		left: 10px;
+		top: 60px;
+	}
+
+	.bstlist {
+		position: absolute;
+		right: 10px;
+		top: 60px;
+	}
+}

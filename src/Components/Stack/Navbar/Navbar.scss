@@ -1,0 +1,26 @@
+#mainBST {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.stack-input {
+    height: 38px;
+    background-color: #345;
+    border: none;
+    text-align: center;
+}
+
+button {
+    margin: 0;
+}
+
+.stack-push {
+    color: #345;
+}
